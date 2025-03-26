@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/backgrond_color"
+    android:padding="20dp">
+
+    <!-- Bouton Menu en haut à gauche -->
+    <ImageButton
+        android:id="@+id/btn_menu"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_button_back"
+        android:src="@drawable/applications_24"
+        android:contentDescription="@string/menu"
+        android:elevation="4dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:backgroundTint="#B8C3C3"/>
+
+
+    <!-- Titre -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ajouter_un_appareil"
+        android:textSize="24sp"
+        android:textStyle="bold|italic"
+        android:textColor="#00757D"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
+    <!-- Liste déroulante des appareils -->
+    <Spinner
+        android:id="@+id/spinner_appareils"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/boutton_rounded"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"/>
+
+    <!-- Référence de l'appareil -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background"
+        android:padding="15dp"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/edit_reference"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/reference"
+            android:textColorHint="#A0A0A0"
+            android:inputType="text"
+            android:background="@null"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+
+
+    <!-- Wattage -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/input_background"
+        android:padding="15dp"
+        android:layout_marginBottom="10dp">
+
+        <EditText
+            android:id="@+id/edit_wattage"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/wattage"
+            android:textColorHint="#A0A0A0"
+            android:inputType="number"
+            android:background="@null"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- Bouton Ajouter -->
+
+    <Button
+        android:id="@+id/btn_se_connecter"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:minWidth="250dp"
+        android:maxWidth="320dp"
+        android:layout_gravity="center"
+        android:text="@string/ajouter"
+        android:textSize="16sp"
+        android:textColor="@color/buttonTextColor"
+        android:background="@drawable/boutton_rounded"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        app:backgroundTint="@color/buttonColor"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="spinner_appareils" type="id">noms appareils</item>
+    <item name="edit_reference" type="id">référence appareil</item>
+    <item name="edit_wattage" type="id">wattage</item>
+    <item name="btn_ajouter" type="id">ajouter</item>
+</resources>

@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/backgrond_color">
+
+    <!-- Bouton Menu en haut à gauche -->
+    <ImageButton
+        android:id="@+id/btn_retour"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/round_button_back"
+        android:src="@drawable/applications_24"
+        android:contentDescription="@string/menu"
+        android:elevation="4dp"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:backgroundTint="#B8C3C3"/>
+
+    <!-- Espace en haut -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
+
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/reglages_24"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="0dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:text="@string/parametre"
+        android:textColor="#00757D"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+    <!-- Espace en haut -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/btn_se_connecter"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:minWidth="250dp"
+        android:maxWidth="320dp"
+        android:layout_gravity="center"
+        android:text="@string/informations_perso"
+        android:textSize="16sp"
+        android:textColor="@color/buttonTextColor"
+        android:background="@drawable/boutton_rounded"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        app:backgroundTint="@color/buttonColor"
+        tools:ignore="RtlHardcoded" />
+
+    <!-- Bouton changer mdp -->
+    <Button
+        android:id="@+id/btn_inscription"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boutton_rounded"
+        android:gravity="center"
+        android:maxWidth="320dp"
+        android:minWidth="250dp"
+        android:text="@string/changer_mdp"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="16sp"
+        app:backgroundTint="@color/buttonColor"
+        tools:ignore="RtlHardcoded" />
+
+    <!-- Bouton Notification -->
+    <Button
+        android:id="@+id/btn_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boutton_rounded"
+        android:gravity="center"
+        android:maxWidth="320dp"
+        android:minWidth="250dp"
+        android:text="@string/notif"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="16sp"
+        app:backgroundTint="@color/buttonColor"
+        tools:ignore="RtlHardcoded" />
+
+</LinearLayout>
