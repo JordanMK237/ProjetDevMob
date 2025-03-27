@@ -47,10 +47,25 @@
     <string name="habitation">Habitation</string>
     <string name="d_connexion">Déconnexion</string>
     <string name="ajout_un_appareil">Ajouter un appareil</string>
+    <string name="exemple_wattage">Exemple : 2025-04-21 20:00:00 - 21:00:00\nMax Wattage: 2000\nRéservé à: 2025-03-28 10:44:22</string>
+    <string name="details_reservations">Réservation heure :\nDate réservation :\nWatt demandé :</string>
+    <string name="consommation">Consommation</string>
     <string-array name="options_menu">
         <item>Accueil</item>
         <item>Profil</item>
         <item>Paramètres</item>
         <item>Déconnexion</item>
     </string-array>
+    <!-- Conso couleurs -->
+    <string name="vert">🟢 Vert</string>
+    <string name="orange">🟠 Orange</string>
+    <string name="rouge">🔴 Rouge</string>
+
+    <!-- Textes formatés -->
+    <string name="text_info">Réservation heure : à définir\nDate réservation : %1$s\nWatt demandé : à définir</string>
+    <string name="text_details">Date : %1$s\nConso globale : %2$d%%\nZone : %3$s\nRéservé à : %4$s\nExemple : 20h à 21h → %5$d W utilisés</string>
+    <string name="toast_text">Conso du %1$s : %2$d%%</string>
+    <string name="apropos">À Propos</string>
+
+
 </resources>

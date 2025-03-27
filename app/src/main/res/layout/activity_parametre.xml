@@ -113,6 +113,24 @@
         app:backgroundTint="@color/buttonColor"
         tools:ignore="RtlHardcoded" />
 
+        <!-- Bouton Notification -->
+        <Button
+            android:id="@+id/btn_apropos"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/boutton_rounded"
+            android:gravity="center"
+            android:maxWidth="320dp"
+            android:minWidth="250dp"
+            android:text="@string/apropos"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="16sp"
+            app:backgroundTint="@color/buttonColor"
+            tools:ignore="RtlHardcoded" />
+
 </LinearLayout>
     <!-- 🟨 Menu déroulant -->
 <com.google.android.material.navigation.NavigationView
