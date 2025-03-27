@@ -41,4 +41,16 @@
     <string name="wattage">Wattage (en W)</string>
     <string name="reference">Référence de l\'appareil</string>
     <string name="ajouter_un_appareil">Ajouter un appareil</string>
+    <string name="menu_titre">Sélectionnez une option</string>
+    <string name="param_tres">Paramètres</string>
+    <string name="cr_neau">Créneau</string>
+    <string name="habitation">Habitation</string>
+    <string name="d_connexion">Déconnexion</string>
+    <string name="ajout_un_appareil">Ajouter un appareil</string>
+    <string-array name="options_menu">
+        <item>Accueil</item>
+        <item>Profil</item>
+        <item>Paramètres</item>
+        <item>Déconnexion</item>
+    </string-array>
 </resources>

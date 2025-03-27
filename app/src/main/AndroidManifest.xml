@@ -16,6 +16,9 @@
             android:name=".ConsommationActivity"
             android:exported="false" />
         <activity
+            android:name=".NavMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".AjoutAppareilActivity"
             android:exported="false" />
         <activity
