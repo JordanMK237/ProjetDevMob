@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".ParametreActivity">
 
     <!-- 🟩 Contenu principal -->
     <LinearLayout
@@ -26,121 +27,86 @@
             android:layout_gravity="start"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3"/>
+            app:backgroundTint="#B8C3C3" />
 
-    <!-- Espace en haut -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        <!-- Titre et icône -->
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/reglages_24"
+            android:contentDescription="@string/logo"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="@string/parametre"
+            android:textColor="#00757D"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/reglages_24"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:layout_marginBottom="0dp"
-        android:layout_gravity="center_horizontal" />
+        <!-- Boutons de sélection -->
+        <Button
+            android:id="@+id/btn_se_connecter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/informations_perso"
+            android:background="@drawable/boutton_rounded"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginTop="20dp"
+            app:backgroundTint="@color/buttonColor" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/parametre"
-        android:textColor="#00757D"
-        android:textSize="22sp"
-        android:textStyle="bold" />
-    <!-- Espace en haut -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        <Button
+            android:id="@+id/btn_inscription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/changer_mdp"
+            android:background="@drawable/boutton_rounded"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/buttonColor" />
 
-    <Button
-        android:id="@+id/btn_se_connecter"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:minWidth="250dp"
-        android:maxWidth="320dp"
-        android:layout_gravity="center"
-        android:text="@string/informations_perso"
-        android:textSize="16sp"
-        android:textColor="@color/buttonTextColor"
-        android:background="@drawable/boutton_rounded"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        app:backgroundTint="@color/buttonColor"
-        tools:ignore="RtlHardcoded" />
+        <Button
+            android:id="@+id/btn_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/notif"
+            android:background="@drawable/boutton_rounded"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/buttonColor" />
 
-    <!-- Bouton changer mdp -->
-    <Button
-        android:id="@+id/btn_inscription"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/boutton_rounded"
-        android:gravity="center"
-        android:maxWidth="320dp"
-        android:minWidth="250dp"
-        android:text="@string/changer_mdp"
-        android:textColor="@color/buttonTextColor"
-        android:textSize="16sp"
-        app:backgroundTint="@color/buttonColor"
-        tools:ignore="RtlHardcoded" />
-
-    <!-- Bouton Notification -->
-    <Button
-        android:id="@+id/btn_notification"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/boutton_rounded"
-        android:gravity="center"
-        android:maxWidth="320dp"
-        android:minWidth="250dp"
-        android:text="@string/notif"
-        android:textColor="@color/buttonTextColor"
-        android:textSize="16sp"
-        app:backgroundTint="@color/buttonColor"
-        tools:ignore="RtlHardcoded" />
-
-        <!-- Bouton Notification -->
         <Button
             android:id="@+id/btn_apropos"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/boutton_rounded"
-            android:gravity="center"
-            android:maxWidth="320dp"
-            android:minWidth="250dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/apropos"
+            android:background="@drawable/boutton_rounded"
             android:textColor="@color/buttonTextColor"
-            android:textSize="16sp"
-            app:backgroundTint="@color/buttonColor"
-            tools:ignore="RtlHardcoded" />
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/buttonColor" />
 
-</LinearLayout>
+        <!-- 🧩 Espace pour les fragments -->
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="20dp"/>
+    </LinearLayout>
+
     <!-- 🟨 Menu déroulant -->
-<com.google.android.material.navigation.NavigationView
-android:id="@+id/navigation_view"
-android:layout_width="wrap_content"
-android:layout_height="match_parent"
-android:layout_gravity="start"
-app:menu="@menu/nav_drawer_menu"
-android:background="@drawable/background_gradient"
-app:itemTextColor="@android:color/white"
-app:itemIconTint="@android:color/white"/>
-
-    </androidx.drawerlayout.widget.DrawerLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/background_gradient"
+        app:menu="@menu/nav_drawer_menu"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white"/>
+</androidx.drawerlayout.widget.DrawerLayout>

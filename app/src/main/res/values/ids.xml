@@ -4,4 +4,5 @@
     <item name="edit_reference" type="id">référence appareil</item>
     <item name="edit_wattage" type="id">wattage</item>
     <item name="btn_ajouter" type="id">ajouter</item>
+    <item name="fragment_container" type="id">fragment_container</item>
 </resources>
