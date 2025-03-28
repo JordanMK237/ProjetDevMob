@@ -28,7 +28,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3" />
+            app:backgroundTint="@color/buttonColor" />
         <!-- Espace -->
         <View
             android:layout_width="match_parent"
