@@ -14,146 +14,169 @@
         android:background="@drawable/background_color"
         android:padding="20dp">
 
-        <!-- ✅ Bouton Menu -->
-        <ImageButton
-            android:id="@+id/btn_menu"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/round_button_back"
-            android:src="@drawable/applications_24"
-            android:contentDescription="@string/menu"
-            android:elevation="4dp"
-            android:layout_gravity="start"
+        <!-- 🔁 Ligne de navigation avec bouton retour à gauche et menu à droite -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3" />
+            android:layout_marginBottom="10dp">
 
-    <!-- Espace en haut -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp" />
+            <!-- ⬅️ Bouton Retour -->
+            <ImageButton
+                android:id="@+id/btn_retour"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button_back"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/retour"
+                android:elevation="4dp"
+                android:layout_marginStart="10dp"
+                app:backgroundTint="#B8C3C3" />
 
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
 
-    <!-- Titre -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/connexion"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#00757D"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp" />
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="20dp" />
+            <!-- ☰ Bouton Menu -->
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button_back"
+                android:src="@drawable/applications_24"
+                android:contentDescription="@string/menu"
+                android:elevation="4dp"
+                android:layout_marginEnd="10dp"
+                app:backgroundTint="#B8C3C3" />
+        </LinearLayout>
 
-    <!-- Email -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/input_background"
-        android:padding="15dp"
-        android:layout_marginBottom="15dp">
+        <!-- Espace en haut -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_email"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="10dp"/>
+        <!-- Titre -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/connexion"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#00757D"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
-        <EditText
-            android:id="@+id/input_email"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="@string/email" android:textColorHint="#A0A0A0"
-            android:inputType="textEmailAddress"
-            android:background="@null"
-            android:textSize="16sp"/>
-    </LinearLayout>
+        <!-- Email -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/input_background"
+            android:padding="15dp"
+            android:layout_marginBottom="15dp">
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_email"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"/>
 
-    <!-- Champ Mot de passe -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/input_background"
-        android:padding="15dp">
+            <EditText
+                android:id="@+id/input_email"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/email"
+                android:textColorHint="#A0A0A0"
+                android:inputType="textEmailAddress"
+                android:background="@null"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_password"
-            android:layout_gravity="center_vertical"
-            android:layout_marginEnd="10dp"/>
+        <!-- Champ Mot de passe -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/input_background"
+            android:padding="15dp">
 
-        <EditText
-            android:id="@+id/input_password"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:hint="@string/mot_de_passe" android:textColorHint="#A0A0A0"
-            android:inputType="textPassword"
-            android:background="@null"
-            android:textSize="16sp"/>
-    </LinearLayout>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_password"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"/>
 
+            <EditText
+                android:id="@+id/input_password"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:hint="@string/mot_de_passe"
+                android:textColorHint="#A0A0A0"
+                android:inputType="textPassword"
+                android:background="@null"
+                android:textSize="16sp"/>
+        </LinearLayout>
 
-    <!-- Bouton Connexion -->
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="@string/se_connecter"
-        android:textAllCaps="true"
-        android:textColor="@color/buttonTextColor"
-        android:background="@drawable/boutton_rounded"
-        android:layout_marginTop="30dp"
-        app:backgroundTint="@color/buttonColor" />
+        <!-- Bouton Connexion -->
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/se_connecter"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonTextColor"
+            android:background="@drawable/boutton_rounded"
+            android:layout_marginTop="30dp"
+            app:backgroundTint="@color/buttonColor" />
 
-    <!-- Lien Mot de passe oublié -->
-    <TextView
-        android:id="@+id/txt_mdp_oublie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/motdepasseoublié"
-        android:textSize="14sp"
-        android:textColor="#00757D"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"/>
+        <!-- Lien Mot de passe oublié -->
+        <TextView
+            android:id="@+id/txt_mdp_oublie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/motdepasseoublié"
+            android:textSize="14sp"
+            android:textColor="#00757D"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"/>
 
-
-    <!-- Texte d'inscription -->
-    <TextView
-        android:id="@+id/txt_inscription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pascompte"
-        android:textSize="14sp"
-        android:textColor="#00757D"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"/>
-    <TextView
-        android:id="@+id/txt_sinscrire"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/inscrireici"
-        android:textSize="14sp"
-        android:textColor="#00757D"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dp"
-        android:textStyle="bold"/> <!-- Souligné -->
+        <!-- Texte d'inscription -->
+        <TextView
+            android:id="@+id/txt_inscription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pascompte"
+            android:textSize="14sp"
+            android:textColor="#00757D"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/txt_sinscrire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/inscrireici"
+            android:textSize="14sp"
+            android:textColor="#00757D"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 

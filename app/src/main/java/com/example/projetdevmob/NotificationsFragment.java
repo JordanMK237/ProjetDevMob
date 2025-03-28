@@ -25,20 +25,4 @@ public class NotificationsFragment extends Fragment {
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_notifications, container, false);
     }
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        DrawerLayout drawerLayout = view.findViewById(R.id.drawer_layout);
-        NavigationView navigationView = view.findViewById(R.id.navigation_view);
-        ImageButton btnMenu = view.findViewById(R.id.btn_menu);
-
-        btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-
-        navigationView.setNavigationItemSelectedListener(item -> {
-            // Ajoute ici tes redirections si besoin
-            drawerLayout.closeDrawer(GravityCompat.START);
-            return true;
-        });
-    }
 }

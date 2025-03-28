@@ -85,6 +85,7 @@
     <string name="activer_le_mode_co_automatique">Activer le mode éco automatique</string>
     <string name="alerte_conso">Alerte Consommation</string>
     <string name="menu_de_navigation">Menu de navigation</string>
+    <string name="retour">Retour</string>
 
 
 </resources>

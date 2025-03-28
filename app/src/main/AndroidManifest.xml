@@ -25,10 +25,10 @@
             android:name=".ParametreActivity"
             android:exported="false" />
         <activity
-            android:name=".AccueilActivity"
+            android:name=".ListeAppartementsActivity"
             android:exported="false" />
         <activity
-            android:name=".forgotPasswordActivity"
+            android:name=".ForgotPasswordActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

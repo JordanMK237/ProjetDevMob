@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- ✅ Contenu principal -->
+    <!-- 🟩 Contenu principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,19 +16,44 @@
         android:background="@drawable/background_color"
         android:padding="20dp">
 
-        <!-- Bouton menu -->
-        <ImageButton
-            android:id="@+id/btn_menu"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/round_button_back"
-            android:src="@drawable/applications_24"
-            android:contentDescription="@string/menu"
-            android:elevation="4dp"
-            android:layout_gravity="start"
+        <!-- 🔁 Ligne de navigation avec bouton retour à gauche et menu à droite -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3" />
+            android:layout_marginBottom="10dp">
+
+            <!-- ⬅️ Bouton Retour -->
+            <ImageButton
+                android:id="@+id/btn_retour"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button_back"
+                android:src="@drawable/ic_back"
+                android:contentDescription="@string/retour"
+                android:elevation="4dp"
+                android:layout_marginStart="10dp"
+                app:backgroundTint="#B8C3C3" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <!-- ☰ Bouton Menu -->
+            <ImageButton
+                android:id="@+id/btn_menu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/round_button_back"
+                android:src="@drawable/applications_24"
+                android:contentDescription="@string/menu"
+                android:elevation="4dp"
+                android:layout_marginEnd="10dp"
+                app:backgroundTint="#B8C3C3" />
+        </LinearLayout>
 
 
     <!-- Titre -->

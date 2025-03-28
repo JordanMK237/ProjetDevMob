@@ -19,6 +19,7 @@ public class AjoutAppareilActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageButton btnMenu;
+    private ImageButton btnRetour; // ⬅️ bouton retour ajouté
     private Spinner spinnerAppareils;
 
     @Override
@@ -26,16 +27,20 @@ public class AjoutAppareilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_appareil);
 
-        // Récupération des vues
+        // 🔗 Récupération des vues
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
+        btnRetour = findViewById(R.id.btn_retour); // 🔁 récupération du bouton retour
         spinnerAppareils = findViewById(R.id.spinner_appareils);
 
-        // Bouton menu
-        btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(androidx.core.view.GravityCompat.START));
+        // ☰ Bouton menu
+        btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // Menu navigation
+        // ⬅️ Bouton retour
+        btnRetour.setOnClickListener(v -> onBackPressed());
+
+        // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
@@ -80,5 +85,15 @@ public class AjoutAppareilActivity extends AppCompatActivity {
                 // Rien de spécial
             }
         });
+    }
+
+    // ✅ Gestion du bouton retour système
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed(); // retour à l'activité précédente
+        }
     }
 }

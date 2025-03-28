@@ -1,4 +1,4 @@
-package com.example.projetdevmob;// Remplace par ton package
+package com.example.projetdevmob;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,10 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -17,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageButton btnMenu;
+    private ImageButton btnRetour; // ⬅️ bouton retour ajouté
     private Button btnInscription;
     private EditText inputPrenom, inputNom, inputEmail, inputPassword, inputEtage, inputSuperficie, inputReponseSecrete;
 
@@ -29,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
+        btnRetour = findViewById(R.id.btn_retour); // 🔁 bouton retour
         btnInscription = findViewById(R.id.btn_inscription);
 
         inputPrenom = findViewById(R.id.input_prenom);
@@ -39,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputSuperficie = findViewById(R.id.superficie);
         inputReponseSecrete = findViewById(R.id.reponse_secrete);
 
-        // 🔽 Bouton Menu
+        // ☰ Bouton Menu
         btnMenu.setOnClickListener(v -> {
             if (drawerLayout.isDrawerOpen(navigationView)) {
                 drawerLayout.closeDrawer(navigationView);
@@ -48,15 +50,17 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // 🔽 Menu Items
+        // ⬅️ Bouton retour → retour vers page précédente
+        btnRetour.setOnClickListener(v -> onBackPressed());
+
+        // 📋 Navigation du menu (à compléter si besoin)
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            // Ajoute ici tes actions selon l'item sélectionné
             drawerLayout.closeDrawer(navigationView);
             return true;
         });
 
-        // 🔽 Bouton Inscription
+        // ➕ Inscription
         btnInscription.setOnClickListener(v -> enregistrerUtilisateur());
     }
 
@@ -70,16 +74,24 @@ public class RegisterActivity extends AppCompatActivity {
         String superficie = inputSuperficie.getText().toString().trim();
         String reponseSecrete = inputReponseSecrete.getText().toString().trim();
 
-        // Petite vérification basique
         if (prenom.isEmpty() || nom.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Veuillez remplir tous les champs obligatoires", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Afficher les infos (tu peux ici les envoyer vers une BDD ou API)
         String message = "Bienvenue " + prenom + " " + nom + " !\nInscription réussie ✅";
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
-        // ➤ Ici, tu peux faire appel à un ViewModel, une BDD, une API...
+        // ➤ Ici tu peux intégrer la logique pour envoyer les données (BDD, API, etc.)
+    }
+
+    // ✅ Gestion du bouton retour système
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(navigationView)) {
+            drawerLayout.closeDrawer(navigationView);
+        } else {
+            super.onBackPressed(); // revient à la page précédente
+        }
     }
 }

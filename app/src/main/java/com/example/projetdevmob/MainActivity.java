@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
 
                 if (id == R.id.nav_accueil) {
-                    startActivity(new Intent(MainActivity.this, AccueilActivity.class));
+                    startActivity(new Intent(MainActivity.this, ListeAppartementsActivity.class));
                 } else if (id == R.id.nav_creneau) {
                     startActivity(new Intent(MainActivity.this, ConsommationActivity.class));
                 } else if (id == R.id.nav_ajout) {

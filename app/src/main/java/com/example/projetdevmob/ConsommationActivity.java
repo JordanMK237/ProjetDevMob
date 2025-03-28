@@ -24,6 +24,9 @@ public class ConsommationActivity extends AppCompatActivity {
     private CalendarView calendarView;
     private TextView textInfo, textDetails;
 
+    private ImageButton btnMenu;
+    private ImageButton btnRetour; // ⬅️ bouton retour ajouté
+
     // Simulation conso par date
     private final HashMap<String, Integer> consommationMap = new HashMap<>();
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.FRANCE);
@@ -33,29 +36,33 @@ public class ConsommationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consommation);
 
-        // Lier les vues
+        // 🔗 Lier les vues
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
-        final ImageButton btnMenu = findViewById(R.id.btn_menu);
+        btnMenu = findViewById(R.id.btn_menu);
+        btnRetour = findViewById(R.id.btn_retour); // 🔁 bouton retour
         calendarView = findViewById(R.id.calendar_view);
         textInfo = findViewById(R.id.text_reservation_info);
         textDetails = findViewById(R.id.text_details);
 
-        // Données de simulation
+        // 🧪 Données de simulation
         consommationMap.put("2025-04-21", 70);  // orange
         consommationMap.put("2025-04-22", 20);  // vert
         consommationMap.put("2025-04-23", 90);  // rouge
 
-        // Ouvre le menu
+        // ☰ Bouton menu
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // Menu navigation
+        // ⬅️ Bouton retour
+        btnRetour.setOnClickListener(v -> onBackPressed());
+
+        // 📋 Navigation Drawer
         navigationView.setNavigationItemSelectedListener(item -> {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
 
-        // Sélection de date dans le calendrier
+        // 📅 Interaction calendrier
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             String selectedDate = String.format(Locale.FRANCE, "%04d-%02d-%02d", year, month + 1, dayOfMonth);
             int consommation = consommationMap.getOrDefault(selectedDate, 0);
@@ -74,5 +81,15 @@ public class ConsommationActivity extends AppCompatActivity {
 
             Toast.makeText(this, getString(R.string.toast_text, selectedDate, consommation), Toast.LENGTH_SHORT).show();
         });
+    }
+
+    // ✅ Gestion retour système
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed(); // Retour à l’activité précédente
+        }
     }
 }

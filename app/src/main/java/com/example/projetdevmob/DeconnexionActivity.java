@@ -15,6 +15,7 @@ public class DeconnexionActivity extends AppCompatActivity {
 
     private Button btnAnnuler, btnDeconnecter;
     private ImageButton btnMenu;
+    private ImageButton btnRetour; // ⬅️ bouton retour ajouté
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
@@ -27,31 +28,45 @@ public class DeconnexionActivity extends AppCompatActivity {
         btnAnnuler = findViewById(R.id.btn_annuler);
         btnDeconnecter = findViewById(R.id.btn_deconnecter);
         btnMenu = findViewById(R.id.btn_menu);
+        btnRetour = findViewById(R.id.btn_retour); // 🆕 récupération du bouton retour
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
 
-        // Menu latéral
+        // ☰ Menu latéral
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
-        // NavigationView Listener (si tu veux ajouter plus tard les redirections)
+        // ⬅️ Bouton retour → revenir à l’activité précédente
+        btnRetour.setOnClickListener(v -> onBackPressed());
+
+        // 📋 Menu NavigationView
         navigationView.setNavigationItemSelectedListener(item -> {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
 
-        // Bouton "Annuler" → Retour à AccueilActivity
+        // 🔁 Bouton "Annuler" → retour à ListeAppartementsActivity
         btnAnnuler.setOnClickListener(v -> {
-            Intent intent = new Intent(DeconnexionActivity.this, AccueilActivity.class);
+            Intent intent = new Intent(DeconnexionActivity.this, ListeAppartementsActivity.class);
             startActivity(intent);
             finish();
         });
 
-        // Bouton "Déconnexion" → Retour à MainActivity (Splash/Login)
+        // 🚪 Bouton "Déconnexion" → retour à MainActivity (écran d’accueil / connexion)
         btnDeconnecter.setOnClickListener(v -> {
             Intent intent = new Intent(DeconnexionActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // évite retour avec bouton back
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // reset de la pile
             startActivity(intent);
             finish();
         });
+    }
+
+    // ✅ Gestion du bouton retour système
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed(); // revient à l’activité précédente (automatique)
+        }
     }
 }

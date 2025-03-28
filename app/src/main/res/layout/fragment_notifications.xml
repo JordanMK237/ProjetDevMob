@@ -5,26 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- 🟩 Contenu principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="20dp"
-        android:background="@drawable/background_color">
+        android:background="@drawable/background_color"
+        android:padding="20dp">
 
-        <ImageButton
-            android:id="@+id/btn_menu"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/round_button_back"
-            android:src="@drawable/applications_24"
-            android:contentDescription="@string/menu"
-            android:elevation="4dp"
-            android:layout_gravity="start"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3" />
+        <!-- 🔁 Ligne de navigation supprimée (pas de menu ni retour dans les fragments) -->
 
+        <!-- Titre -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +24,6 @@
             android:textStyle="bold"
             android:textColor="#00757D"
             android:layout_gravity="center" />
-
 
         <TextView
             android:layout_width="match_parent"
@@ -65,4 +55,3 @@
         app:itemTextColor="@android:color/white"
         app:itemIconTint="@android:color/white" />
 </androidx.drawerlayout.widget.DrawerLayout>
-
