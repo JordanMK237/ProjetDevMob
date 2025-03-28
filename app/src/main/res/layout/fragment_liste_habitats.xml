@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/background_color"
+        android:background="@drawable/background_gradient"
         android:padding="20dp">
 
         <!-- 🏠 Contenu du fragment -->

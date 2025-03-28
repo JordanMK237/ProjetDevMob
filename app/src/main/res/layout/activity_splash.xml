@@ -11,14 +11,13 @@
         android:id="@+id/logo"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/logose"
         android:contentDescription="Logo"/>
 
     <!-- Texte de bienvenue -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/bienvenue"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"/>
