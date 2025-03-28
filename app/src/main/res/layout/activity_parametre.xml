@@ -28,7 +28,6 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             app:backgroundTint="#B8C3C3" />
-
         <!-- Titre et icône -->
         <ImageView
             android:layout_width="120dp"

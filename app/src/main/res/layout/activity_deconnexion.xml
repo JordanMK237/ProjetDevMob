@@ -26,9 +26,9 @@
             android:contentDescription="@string/menu"
             android:elevation="4dp"
             android:layout_gravity="start"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            app:backgroundTint="#B8C3C3"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            app:backgroundTint="#B8C3C3" />
 
     <!-- Espace en haut -->
     <View

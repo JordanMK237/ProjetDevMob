@@ -26,7 +26,7 @@
             android:layout_gravity="start"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            app:backgroundTint="#B8C3C3"/>
+            app:backgroundTint="#B8C3C3" />
 
     <!-- Espace en haut -->
     <View

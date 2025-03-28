@@ -23,13 +23,12 @@
             android:layout_height="50dp"
             android:background="@drawable/round_button_back"
             android:src="@drawable/applications_24"
+            android:contentDescription="@string/menu"
+            android:elevation="4dp"
             android:layout_gravity="start"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:contentDescription="@string/menu"
-            app:backgroundTint="#B8C3C3"
-            android:elevation="4dp" />
-
+            app:backgroundTint="#B8C3C3" />
         <!-- Titre -->
         <TextView
             android:id="@+id/consommation_title"

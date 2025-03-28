@@ -1,16 +1,77 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/background_color">
+    android:layout_height="match_parent">
 
-    <TextView
+    <!-- 🟩 Contenu principal du fragment -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_color"
+        android:padding="20dp">
+
+        <!-- ✅ Bouton Menu -->
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/round_button_back"
+            android:src="@drawable/applications_24"
+            android:contentDescription="@string/menu"
+            android:elevation="4dp"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            app:backgroundTint="#B8C3C3" />
+
+        <!-- 🏠 Contenu du fragment -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/liste_des_habitats"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#00757D"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/habitat_1_tage_1_n_4_quipements"
+                android:padding="12dp"
+                android:background="@drawable/input_background"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/habitat_2_tage_2_n_3_quipements"
+                android:padding="12dp"
+                android:background="@drawable/input_background"
+                android:textColor="#000" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 🟨 Menu Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/liste_habitats"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#00757D"
-        android:layout_gravity="center" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/background_gradient"
+        app:menu="@menu/nav_drawer_menu"
+        app:itemTextColor="@android:color/white"
+        app:itemIconTint="@android:color/white" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

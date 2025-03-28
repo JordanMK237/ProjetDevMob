@@ -72,6 +72,19 @@
     <string name="mon_habitat">Mon Habitat</string>
     <string name="mes_notifications">Mes Notifications</string>
     <string name="mes_preferences">Mes Préférences</string>
+    <string name="habitat_2_tage_2_n_3_quipements">🏠 Habitat #2 - Étage 2\n🛠️ 3 équipements</string>
+    <string name="habitat_1_tage_1_n_4_quipements">🏠 Habitat #1 - Étage 1\n🛠️ 4 équipements</string>
+    <string name="liste_des_habitats">Liste des habitats</string>
+    <string name="nom_smartappart_203_n_conso_moyenne_1120w_n_appareils_4_n_tage_2">📍 Nom : SmartAppart #203\n📶 Conso moyenne : 1120W\n🧩 Appareils : 4\n🧑‍🔧 Étage : 2</string>
+    <string name="mon_habitats">Mon habitat</string>
+    <string name="r_servation_valid_e_pour_le_28_mars_21h">✅ Réservation validée pour le 28 mars à 21h</string>
+    <string name="votre_habitat_a_d_pass_les_70_de_sa_capacit_14h">⚠️ Votre habitat a dépassé les 70% de sa capacité à 14h.</string>
+    <string name="mes_notification">Mes notifications</string>
+    <string name="mes_pr_f_rences">Mes préférences</string>
+    <string name="recevoir_les_alertes_de_consommation">Recevoir les alertes de consommation</string>
+    <string name="activer_le_mode_co_automatique">Activer le mode éco automatique</string>
+    <string name="alerte_conso">Alerte Consommation</string>
+    <string name="menu_de_navigation">Menu de navigation</string>
 
 
 </resources>
