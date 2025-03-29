@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">ProjetDevMob</string>
-    <string name="bienvenue">Bienvenue dans SmartEco</string>
+    <string name="app_name">SmartEco</string>
+    <string name="bienvenue">Bienvenue sur SmartEco</string>
     <string name="motdepasseoublié">Mot de passe oublié </string>
     <string name="se_connecter">Se Connecter</string>
     <string name="inscription">Inscription</string>
