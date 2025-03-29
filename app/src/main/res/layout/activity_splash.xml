@@ -12,7 +12,7 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/logose"
-        android:contentDescription="Logo"/>
+        android:contentDescription="@string/logose"/>
 
     <!-- Texte de bienvenue -->
     <TextView
