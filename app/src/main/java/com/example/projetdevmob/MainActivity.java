@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,6 +70,21 @@ public class MainActivity extends AppCompatActivity {
         buttonInscription.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, RegisterActivity.class));
         });
+
+        // 🕒 Message d'accueil dynamique
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        String message;
+
+        if (hour >= 5 && hour < 12) {
+            message = "Bonjour et bienvenue sur SmartEco ☀️\nGérez votre énergie dès le matin !";
+        } else if (hour >= 12 && hour < 18) {
+            message = "Bon après-midi ! Pensez à surveiller votre consommation ⚡";
+        } else {
+            message = "Bonsoir 🌙 Restez connecté à votre habitat avec SmartEco.";
+        }
+
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 
     // Fermer le drawer si ouvert quand on appuie sur "retour"

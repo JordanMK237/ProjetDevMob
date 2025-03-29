@@ -86,6 +86,7 @@
     <string name="alerte_conso">Alerte Consommation</string>
     <string name="menu_de_navigation">Menu de navigation</string>
     <string name="retour">Retour</string>
+    <string name="welcome">Bienvenue chez vous ! \nSmartEco vous aide à mieux comprendre \net gérer votre énergie au quotidien.</string>
 
 
 </resources>
