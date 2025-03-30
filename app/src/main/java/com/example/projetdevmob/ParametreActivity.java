@@ -2,6 +2,7 @@ package com.example.projetdevmob;
 
 import static com.example.projetdevmob.R.*;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class ParametreActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private ImageButton buttonMenu;
     private ImageButton buttonRetour; // 🔁 Bouton retour ajouté
-    private Button btnInfos, btnMdp, btnNotifs, btnAPropos, btnPrefernce;
+    private Button btnInfos, btnMdp, btnNotifs, btnAPropos, btnPrefernce,btnEditProfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ParametreActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
         buttonMenu = findViewById(R.id.btn_menu);
         buttonRetour = findViewById(R.id.btn_retour); // ⬅️ récupération du bouton retour
+        btnEditProfil = findViewById(R.id.btn_edit_profil);
 
         btnInfos = findViewById(R.id.btn_se_connecter);
         btnMdp = findViewById(R.id.btn_inscription);
@@ -43,6 +45,20 @@ public class ParametreActivity extends AppCompatActivity {
         // ☰ Menu
         buttonMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
         navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+
+            if (id == R.id.nav_accueil) {
+                startActivity(new Intent(this, ListeAppartementsActivity.class));
+            } else if (id == R.id.nav_creneau) {
+                startActivity(new Intent(this, ConsommationActivity.class));
+            } else if (id == R.id.nav_ajout) {
+                startActivity(new Intent(this, AjoutAppareilActivity.class));
+            } else if (id == R.id.nav_parametres) {
+                startActivity(new Intent(this, ParametreActivity.class));
+            } else if (id == R.id.nav_deconnexion) {
+                startActivity(new Intent(this, DeconnexionActivity.class));
+            }
+
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
@@ -55,6 +71,7 @@ public class ParametreActivity extends AppCompatActivity {
         btnMdp.setOnClickListener(v -> openFragment(new MonHabitatFragment()));
         btnNotifs.setOnClickListener(v -> openFragment(new NotificationsFragment()));
         btnPrefernce.setOnClickListener(v -> openFragment(new PreferencesFragment())); // 🔧 Corrigé ici
+        btnEditProfil.setOnClickListener(v -> openFragment(new EditProfilFragment()));
 
         btnAPropos.setOnClickListener(v -> new AlertDialog.Builder(this)
                 .setTitle("À propos")
