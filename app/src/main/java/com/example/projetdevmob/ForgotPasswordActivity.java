@@ -51,7 +51,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, ListeAppartementsActivity.class));
+                startActivity(new Intent(this, BienvenueActivity.class));
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {

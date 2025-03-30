@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -57,54 +56,84 @@
                 app:backgroundTint="@color/buttonColor" />
         </LinearLayout>
 
-    <!-- Logo -->
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/logose"
-        android:scaleType="fitCenter"
-        android:adjustViewBounds="true"
-        android:layout_gravity="center_horizontal" />
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/logo"
+            android:src="@drawable/logose"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center_horizontal" />
 
-
-    <!-- Liste des habitants -->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
-
-        <LinearLayout
+        <!-- Contenu scrollable -->
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
 
-            <!-- Troisième Carte -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@drawable/background_splash"
-                android:padding="16dp"
-                android:layout_marginTop="20dp"
-                android:elevation="6dp">
+                android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/prenom"
-                    android:layout_width="wrap_content"
+                <!-- 🟫 Carte d'infos utilisateur -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="4dp"/>
+                    android:orientation="vertical"
+                    android:background="@drawable/background_splash"
+                    android:padding="16dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="6dp">
+
+                    <!-- Nom complet -->
+                    <TextView
+                        android:id="@+id/prenom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:layout_marginBottom="6dp" />
+
+                    <!-- Étage -->
+                    <TextView
+                        android:id="@+id/etage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Superficie -->
+                    <TextView
+                        android:id="@+id/superficie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:layout_marginBottom="4dp" />
+
+                    <!-- Appareils -->
+                    <TextView
+                        android:id="@+id/appareils"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@android:color/white"
+                        android:layout_marginBottom="4dp" />
+
+                </LinearLayout>
             </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
+        </ScrollView>
     </LinearLayout>
-    <!-- 🟨 Menu déroulant -->
+
+    <!-- 🟨 Menu de navigation -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
@@ -113,7 +142,5 @@
         app:menu="@menu/nav_drawer_menu"
         android:background="@drawable/background_gradient"
         app:itemTextColor="@android:color/white"
-        app:itemIconTint="@android:color/white"/>
-
+        app:itemIconTint="@android:color/white" />
 </androidx.drawerlayout.widget.DrawerLayout>
-

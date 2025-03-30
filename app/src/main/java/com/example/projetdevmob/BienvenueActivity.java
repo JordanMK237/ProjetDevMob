@@ -22,26 +22,22 @@ public class BienvenueActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bienvenue); // Assurez-vous que c'est le bon layout
+        setContentView(R.layout.activity_bienvenue);
 
-        // 🔁 Initialisation des vues du menu
+        // 🔁 Initialisation
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
         btnRetour = findViewById(R.id.btn_retour);
 
-        // ☰ Bouton menu
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-
-        // ⬅️ Bouton retour
         btnRetour.setOnClickListener(v -> onBackPressed());
 
-        // 📋 Navigation
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, ListeAppartementsActivity.class));
+                startActivity(new Intent(this, BienvenueActivity.class));
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
@@ -56,15 +52,28 @@ public class BienvenueActivity extends AppCompatActivity {
             return true;
         });
 
-        // 🧠 Affichage du prénom
+        // 🧠 Affichage des données de session
         SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
         String prenom = prefs.getString("user_prenom", "Invité");
+        String nom = prefs.getString("user_nom", "");
+        String etage = prefs.getString("user_etage", "Non précisé");
+        String superficie = prefs.getString("user_superficie", "Non précisée");
+        int nbEquipements = prefs.getInt("user_nb_equipements", 0); // récupéré via API si dispo
 
         TextView prenomTextView = findViewById(R.id.prenom);
-        prenomTextView.setText(prenom);
+        TextView infosTextView = findViewById(R.id.etage);
+        TextView appareilsTextView = findViewById(R.id.appareils);
+
+        prenomTextView.setText("Bienvenue " + prenom + " " + nom + " 👋");
+        infosTextView.setText("Étage : " + etage + "\nSuperficie : " + superficie + " m²");
+
+        if (nbEquipements > 0) {
+            appareilsTextView.setText("Appareils enregistrés : " + nbEquipements);
+        } else {
+            appareilsTextView.setText("Aucun appareil enregistré pour l’instant. Pensez à en ajouter !");
+        }
     }
 
-    // ✅ Gestion du bouton retour système
     @Override
     public void onBackPressed() {
         if (drawerLayout != null && drawerLayout.isDrawerOpen(GravityCompat.START)) {

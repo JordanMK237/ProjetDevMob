@@ -61,7 +61,7 @@ public class ConsommationActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, ListeAppartementsActivity.class));
+                startActivity(new Intent(this, BienvenueActivity.class));
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
@@ -75,7 +75,6 @@ public class ConsommationActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
-
 
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             dateSelectionnee = String.format(Locale.FRANCE, "%04d-%02d-%02d", year, month + 1, dayOfMonth);
