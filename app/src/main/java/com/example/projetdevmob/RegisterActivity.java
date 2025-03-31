@@ -1,7 +1,6 @@
 package com.example.projetdevmob;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -10,7 +9,15 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.projetdevmob.api.NewUser;
 import com.google.android.material.navigation.NavigationView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import com.example.projetdevmob.api.ApiService;
+import com.example.projetdevmob.api.RegisterReponse;
+import com.example.projetdevmob.api.RetrofitClient;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -41,6 +48,17 @@ public class RegisterActivity extends AppCompatActivity {
         inputSuperficie = findViewById(R.id.superficie);
         inputReponseSecrete = findViewById(R.id.reponse_secrete);
 
+        // Valeur par défaut pour test
+        if(true){
+            inputPrenom.setText("Victor");
+            inputNom.setText("Victor");
+            inputEmail.setText("Victor");
+            inputPassword.setText("Victor");
+            inputEtage.setText("69");
+            inputSuperficie.setText("69");
+            inputReponseSecrete.setText("Victor");
+        }
+
         // ☰ Bouton Menu
         btnMenu.setOnClickListener(v -> {
             if (drawerLayout.isDrawerOpen(navigationView)) {
@@ -64,7 +82,6 @@ public class RegisterActivity extends AppCompatActivity {
         btnInscription.setOnClickListener(v -> enregistrerUtilisateur());
     }
 
-    // 🔽 Méthode d'inscription
     private void enregistrerUtilisateur() {
         String prenom = inputPrenom.getText().toString().trim();
         String nom = inputNom.getText().toString().trim();
@@ -79,11 +96,36 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        String message = "Bienvenue " + prenom + " " + nom + " !\nInscription réussie ✅";
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        // Création d'un objet RegisterRequest (à créer si besoin, ou vous pouvez réutiliser la classe User)
+        NewUser newUser = new NewUser(prenom, nom, email, password, etage, superficie, reponseSecrete);
 
-        // ➤ Ici tu peux intégrer la logique pour envoyer les données (BDD, API, etc.)
+        // Appel à l'API via Retrofit
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<RegisterReponse> call = apiService.registerUser(newUser);
+        call.enqueue(new Callback<RegisterReponse>() {
+            @Override
+            public void onResponse(Call<RegisterReponse> call, Response<RegisterReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    if (response.body().isSuccess()) {
+                        Toast.makeText(RegisterActivity.this, "Inscription réussie", Toast.LENGTH_LONG).show();
+                        // Rediriger vers la page de login ou MainActivity
+                        // startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "Erreur : " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Erreur lors de l'inscription (réponse invalide)", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterReponse> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "Erreur de connexion : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
     // ✅ Gestion du bouton retour système
     @Override
