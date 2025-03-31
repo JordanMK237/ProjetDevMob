@@ -5,5 +5,5 @@
     <item name="edit_wattage" type="id" />
     <item name="btn_ajouter" type="id" />
     <item name="fragment_container" type="id" />
-    <item name="btn_save" type="id">btn save</item>
+    <item name="btn_save" type="id" />
 </resources>
