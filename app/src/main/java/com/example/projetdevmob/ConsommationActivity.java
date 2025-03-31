@@ -110,7 +110,9 @@ public class ConsommationActivity extends AppCompatActivity {
             int consoPourcent = Math.min((watt * 100) / 2000, 100); // calcul % de 2000W
 
             // Mise à jour de la consommation pour cette date
-            consommationMap.put(dateSelectionnee, consoPourcent);
+            int ancienneConso = consommationMap.getOrDefault(dateSelectionnee, 0);
+            int nouvelleConso = Math.min(100, ancienneConso + consoPourcent);
+            consommationMap.put(dateSelectionnee, nouvelleConso);
 
             // Sauvegarde de la date de réservation
             SharedPreferences.Editor editor = prefs.edit();
