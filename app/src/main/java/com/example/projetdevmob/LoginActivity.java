@@ -114,8 +114,9 @@ public class LoginActivity extends AppCompatActivity {
                     if (response.body().isSuccess()) {
                         // Récupérer l'objet utilisateur retourné par l'API
                         com.example.projetdevmob.api.User userinfo = response.body().getUser();
+                        com.example.projetdevmob.api.UserEquipement userequip = response.body().getUserEquipement();
                         Toast.makeText(LoginActivity.this, "Connexion réussie : " + response.body().getMessage(), Toast.LENGTH_LONG).show();
-                        saveUser(userinfo);
+                        saveUser(userinfo, userequip);
                         startActivity(new Intent(LoginActivity.this, BienvenueActivity.class));
                         finish();
                     } else {
@@ -142,16 +143,27 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    private void saveUser(com.example.projetdevmob.api.User user) {
+    private void saveUser(com.example.projetdevmob.api.User user, com.example.projetdevmob.api.UserEquipement userEquipement) {
         SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
+
         editor.putInt("user_id", user.getId());
         editor.putString("user_prenom", user.getPrenom());
         editor.putString("user_nom", user.getNom());
         editor.putString("user_email", user.getEmail());
-
         editor.putString("user_etage", user.getEtage());
         editor.putString("user_superficie", user.getSuperficie());
+
+        editor.putInt("aspi", userEquipement.isAspirateur());
+        editor.putInt("fer", userEquipement.isFer_repasser());
+        editor.putInt("clim", userEquipement.isClimatiseur());
+        editor.putInt("machine", userEquipement.isMachine_a_laver());
+
+        editor.putInt("aspirateur_conso", userEquipement.getAspirateur_conso());
+        editor.putInt("fer_repasser_conso", userEquipement.getFer_repasser_conso());
+        editor.putInt("climatiseur_conso", userEquipement.getClimatiseur_conso());
+        editor.putInt("machine_a_laver_conso", userEquipement.getMachine_a_laver_conso());
+        editor.putInt("userConsoTotal", userEquipement.getConsoTotale());
         editor.apply();
     }
 

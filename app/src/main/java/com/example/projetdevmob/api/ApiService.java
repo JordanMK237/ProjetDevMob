@@ -11,7 +11,6 @@ public interface ApiService {
     // Ajout de l'appel login
     @POST("api.php?action=login")
     Call<LoginReponse> loginUser(@Body LoginRequete loginRequete);
-
-    @POST("ajoutAppareil")
+    @POST("api.php?action=ajoutAppareil")
     Call<ApiResponse> ajouterAppareil(@Body AjoutAppareilRequete requete);
 }

@@ -119,7 +119,8 @@ public class ConsommationActivity extends AppCompatActivity {
         });
 
         btnReserver.setOnClickListener(v -> {
-            int watt = prefs.getInt("watt", 0); // récupération du wattage demandé
+            int watt = prefs.getInt("userConsoTotal", 0); // récupération du wattage demandé
+
             int consoPourcent = Math.min((watt * 100) / 2000, 100); // calcul % de 2000W
 
             // Mise à jour de la consommation pour cette date

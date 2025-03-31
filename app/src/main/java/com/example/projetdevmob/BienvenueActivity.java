@@ -73,11 +73,42 @@ public class BienvenueActivity extends AppCompatActivity {
         prenomTextView.setText("Bienvenue " + prenom + " " + nom );
         infosTextView.setText("Étage : " + etage + "\nSuperficie : " + superficie + " m²");
 
-        if (nbEquipements > 0) {
-            appareilsTextView.setText("Appareils enregistrés : " + nbEquipements);
-        } else {
-            appareilsTextView.setText("Aucun appareil enregistré pour l’instant. Pensez à en ajouter !");
+
+        // Récupération des informations d'équipements
+        int aspirateur = prefs.getInt("aspi", 0);
+        int fer = prefs.getInt("fer", 0);
+        int clim = prefs.getInt("clim", 0);
+        int machine = prefs.getInt("machine", 0);
+
+        int aspirateurConso = prefs.getInt("aspirateur_conso", 0);
+        int ferConso = prefs.getInt("fer_repasser_conso", 0);
+        int climConso = prefs.getInt("climatiseur_conso", 0);
+        int machineConso = prefs.getInt("machine_a_laver_conso", 0);
+        int totalConsommation = prefs.getInt("userConsoTotal", 0);
+
+        // Construction du texte à afficher
+        StringBuilder sb = new StringBuilder();
+        if (aspirateur == 1) {
+            sb.append("Aspirateur : ").append(aspirateurConso).append(" W\n");
         }
+        if (fer == 1) {
+            sb.append("Fer à repasser : ").append(ferConso).append(" W\n");
+        }
+        if (clim == 1) {
+            sb.append("Climatiseur : ").append(climConso).append(" W\n");
+        }
+        if (machine == 1) {
+            sb.append("Machine à laver : ").append(machineConso).append(" W\n");
+        }
+
+        if (sb.length() > 0) {
+            sb.append("Total consommation : ").append(totalConsommation).append(" W");
+        } else {
+            sb.append("Aucun appareil enregistré pour l’instant. Pensez à en ajouter !");
+        }
+
+        // Mise à jour de l'affichage
+        appareilsTextView.setText(sb.toString());
     }
 
     @Override
