@@ -1,6 +1,7 @@
 package com.example.projetdevmob;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -38,12 +39,19 @@ public class DeconnexionActivity extends AppCompatActivity {
         // ⬅️ Bouton retour → revenir à l’activité précédente
         btnRetour.setOnClickListener(v -> onBackPressed());
 
-        // 📋 Menu NavigationView
+        // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
+            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
+
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, BienvenueActivity.class));
+                if (isLoggedIn) {
+                    startActivity(new Intent(this, BienvenueActivity.class));
+                } else {
+                    startActivity(new Intent(this, BienvenueInvitesActivity.class));
+                }
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
@@ -58,7 +66,6 @@ public class DeconnexionActivity extends AppCompatActivity {
             return true;
         });
 
-
         // 🔁 Bouton "Annuler" → retour à ListeAppartementsActivity
         btnAnnuler.setOnClickListener(v -> {
             Intent intent = new Intent(DeconnexionActivity.this, BienvenueActivity.class);
@@ -67,12 +74,21 @@ public class DeconnexionActivity extends AppCompatActivity {
         });
 
         // 🚪 Bouton "Déconnexion" → retour à MainActivity (écran d’accueil / connexion)
+        // 🚪 Bouton "Déconnexion" → reset session et retour à MainActivity
         btnDeconnecter.setOnClickListener(v -> {
+            // ➖ Supprimer les données utilisateur stockées dans les SharedPreferences
+            getSharedPreferences("user_session", MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply();
+
+            // 🔁 Retour à l'accueil (MainActivity)
             Intent intent = new Intent(DeconnexionActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // reset de la pile
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });
+
     }
 
     // ✅ Gestion du bouton retour système

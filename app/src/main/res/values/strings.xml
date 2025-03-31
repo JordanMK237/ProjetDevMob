@@ -95,5 +95,6 @@
     <string name="pr_nom">Prénom</string>
     <string name="modifier_le_profil">Modifier le profil</string>
     <string name="edit_profil">Edit Profile</string>
+    <string name="se_connect">Se connecter</string>
 
 </resources>

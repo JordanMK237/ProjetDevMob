@@ -57,11 +57,19 @@ public class ConsommationActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
         btnRetour.setOnClickListener(v -> onBackPressed());
 
+        // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
+            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
+
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, BienvenueActivity.class));
+                if (isLoggedIn) {
+                    startActivity(new Intent(this, BienvenueActivity.class));
+                } else {
+                    startActivity(new Intent(this, BienvenueInvitesActivity.class));
+                }
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
