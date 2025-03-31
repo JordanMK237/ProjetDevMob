@@ -1,5 +1,6 @@
 package com.example.projetdevmob;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -45,20 +46,21 @@ public class AjoutAppareilActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                Toast.makeText(this, "Accueil", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, BienvenueActivity.class));
             } else if (id == R.id.nav_creneau) {
-                Toast.makeText(this, "Créneau", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
-                Toast.makeText(this, "Ajout appareil", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, AjoutAppareilActivity.class));
             } else if (id == R.id.nav_parametres) {
-                Toast.makeText(this, "Paramètres", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ParametreActivity.class));
             } else if (id == R.id.nav_deconnexion) {
-                Toast.makeText(this, "Déconnexion", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, DeconnexionActivity.class));
             }
 
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
+
 
         // 📦 Liste des appareils
         String[] appareils = {"Aspirateur", "Fer à repasser", "Climatiseur", "Machine à laver"};

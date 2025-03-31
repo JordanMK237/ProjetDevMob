@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText loginEmail, loginPassword;
     private Button btnLogin;
-    private TextView linkRegister;
+    private TextView linkRegister, linkForgotPassword;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageButton btnMenu, btnRetour;
@@ -43,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         loginPassword = findViewById(R.id.input_password);
         btnLogin = findViewById(R.id.btn_login);
         linkRegister = findViewById(R.id.txt_sinscrire);
+        linkForgotPassword = findViewById(R.id.txt_mdp_oublie);
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
@@ -54,17 +55,34 @@ public class LoginActivity extends AppCompatActivity {
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
-            // Actions selon l'item sélectionné
+
+            if (id == R.id.nav_accueil) {
+                startActivity(new Intent(this, BienvenueActivity.class));
+            } else if (id == R.id.nav_creneau) {
+                startActivity(new Intent(this, ConsommationActivity.class));
+            } else if (id == R.id.nav_ajout) {
+                startActivity(new Intent(this, AjoutAppareilActivity.class));
+            } else if (id == R.id.nav_parametres) {
+                startActivity(new Intent(this, ParametreActivity.class));
+            } else if (id == R.id.nav_deconnexion) {
+                startActivity(new Intent(this, DeconnexionActivity.class));
+            }
+
             drawerLayout.closeDrawer(GravityCompat.START);
             return true;
         });
+
 
         btnLogin.setOnClickListener(view -> loginUser());
 
         linkRegister.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         });
+        linkForgotPassword.setOnClickListener(view -> {
+            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
+        });
     }
+
 
     private void loginUser() {
         String email = loginEmail.getText().toString().trim();

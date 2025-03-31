@@ -123,6 +123,15 @@
             android:textColor="@color/buttonTextColor"
             android:layout_marginTop="10dp"
             app:backgroundTint="@color/buttonColor" />
+        <Button
+            android:id="@+id/btn_edit_profil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profil"
+            android:background="@drawable/boutton_rounded"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginTop="10dp"
+            app:backgroundTint="@color/buttonColor" />
 
         <!-- 🧩 Espace pour les fragments -->
         <FrameLayout
