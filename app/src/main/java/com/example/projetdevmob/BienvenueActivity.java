@@ -28,13 +28,22 @@ public class BienvenueActivity extends AppCompatActivity {
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
 
+
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
+        // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
+            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
+
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, BienvenueActivity.class));
+                if (isLoggedIn) {
+                    startActivity(new Intent(this, BienvenueActivity.class));
+                } else {
+                    startActivity(new Intent(this, BienvenueInvitesActivity.class));
+                }
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
@@ -49,34 +58,25 @@ public class BienvenueActivity extends AppCompatActivity {
             return true;
         });
 
-        // 🔍 Récupération des SharedPreferences
+        // 🧠 Affichage des données de session
         SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-        String prenom = prefs.getString("user_prenom", null);
+        String prenom = prefs.getString("user_prenom", "Invité");
+        String nom = prefs.getString("user_nom", "");
+        String etage = prefs.getString("user_etage", "Non précisé");
+        String superficie = prefs.getString("user_superficie", "Non précisée");
+        int nbEquipements = prefs.getInt("user_nb_equipements", 0); // récupéré via API si dispo
 
         TextView prenomTextView = findViewById(R.id.prenom);
         TextView infosTextView = findViewById(R.id.etage);
         TextView appareilsTextView = findViewById(R.id.appareils);
 
-        if (prenom == null) {
-            // 🔓 Pas connecté
-            prenomTextView.setText("Bienvenue sur SmartEco ");
-            infosTextView.setText("Veuillez vous connecter pour accéder à vos informations.");
-            appareilsTextView.setText("Aucun appareil détecté.");
+        prenomTextView.setText("Bienvenue " + prenom + " " + nom );
+        infosTextView.setText("Étage : " + etage + "\nSuperficie : " + superficie + " m²");
+
+        if (nbEquipements > 0) {
+            appareilsTextView.setText("Appareils enregistrés : " + nbEquipements);
         } else {
-            // ✅ Connecté
-            String nom = prefs.getString("user_nom", "");
-            String etage = prefs.getString("user_etage", "Non précisé");
-            String superficie = prefs.getString("user_superficie", "Non précisée");
-            int nbEquipements = prefs.getInt("user_nb_equipements", 0);
-
-            prenomTextView.setText("Bienvenue " + prenom + " " + nom);
-            infosTextView.setText("Étage : " + etage + "\nSuperficie : " + superficie + " m²");
-
-            if (nbEquipements > 0) {
-                appareilsTextView.setText("Appareils enregistrés : " + nbEquipements);
-            } else {
-                appareilsTextView.setText("Aucun appareil enregistré pour l’instant. Pensez à en ajouter !");
-            }
+            appareilsTextView.setText("Aucun appareil enregistré pour l’instant. Pensez à en ajouter !");
         }
     }
 

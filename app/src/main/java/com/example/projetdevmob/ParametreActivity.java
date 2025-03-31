@@ -3,6 +3,7 @@ package com.example.projetdevmob;
 import static com.example.projetdevmob.R.*;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -44,11 +45,19 @@ public class ParametreActivity extends AppCompatActivity {
 
         // ☰ Menu
         buttonMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
+        // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
+            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
+
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
-                startActivity(new Intent(this, BienvenueActivity.class));
+                if (isLoggedIn) {
+                    startActivity(new Intent(this, BienvenueActivity.class));
+                } else {
+                    startActivity(new Intent(this, BienvenueInvitesActivity.class));
+                }
             } else if (id == R.id.nav_creneau) {
                 startActivity(new Intent(this, ConsommationActivity.class));
             } else if (id == R.id.nav_ajout) {
