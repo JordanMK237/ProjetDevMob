@@ -82,43 +82,6 @@ public class AjoutAppareilActivity extends AppCompatActivity {
 
         spinnerAppareils.setAdapter(adapter);
 
-        // 🎯 Réaction quand on sélectionne un appareil
-        spinnerAppareils.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String appareilChoisi = parent.getItemAtPosition(position).toString();
-                int userId = getSharedPreferences("user_session", MODE_PRIVATE).getInt("user_id", -1);
-                AjoutAppareilRequete requete = new AjoutAppareilRequete(userId, appareilChoisi);
-
-                ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
-                Call<ApiResponse> call = apiService.ajouterAppareil(requete);
-                call.enqueue(new Callback<ApiResponse>() {
-                    @Override
-                    public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
-                        if (response.isSuccessful() && response.body() != null && response.body().isSuccess()) {
-                            Toast.makeText(AjoutAppareilActivity.this, "✅ Appareil ajouté !", Toast.LENGTH_SHORT).show();
-
-                            // Mettre à jour le nombre d’équipements localement
-                            SharedPreferences.Editor editor = getSharedPreferences("user_session", MODE_PRIVATE).edit();
-                            editor.putInt("user_nb_equipements", response.body().getNb_appareils());
-                            editor.apply();
-                        } else {
-                            Toast.makeText(AjoutAppareilActivity.this, "❌ Échec ajout : " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ApiResponse> call, Throwable t) {
-                        Toast.makeText(AjoutAppareilActivity.this, "Erreur réseau : " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Rien de spécial
-            }
-        });
     }
 
     // ✅ Gestion du bouton retour système
