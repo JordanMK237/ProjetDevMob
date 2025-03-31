@@ -114,6 +114,7 @@ public class ConsommationActivity extends AppCompatActivity {
             int nouvelleConso = Math.min(100, ancienneConso + consoPourcent);
             consommationMap.put(dateSelectionnee, nouvelleConso);
 
+
             // Sauvegarde de la date de réservation
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("date_reservation", dateSelectionnee);
