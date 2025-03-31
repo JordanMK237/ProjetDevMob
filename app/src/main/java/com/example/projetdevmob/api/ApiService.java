@@ -6,7 +6,7 @@ import retrofit2.http.POST;
 
 public interface ApiService {
     @POST("api.php?action=register")
-    Call<RegisterReponse> registerUser(@Body User user);
+    Call<RegisterReponse> registerUser(@Body NewUser user);
 
     // Ajout de l'appel login
     @POST("api.php?action=login")
