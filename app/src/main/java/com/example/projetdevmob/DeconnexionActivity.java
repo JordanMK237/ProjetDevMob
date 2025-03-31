@@ -68,9 +68,15 @@ public class DeconnexionActivity extends AppCompatActivity {
 
         // 🔁 Bouton "Annuler" → retour à ListeAppartementsActivity
         btnAnnuler.setOnClickListener(v -> {
-            Intent intent = new Intent(DeconnexionActivity.this, BienvenueActivity.class);
-            startActivity(intent);
-            finish();
+            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            boolean isLoggedIn = prefs.contains("user_email"); // ou autre info
+
+            if (isLoggedIn) {
+                startActivity(new Intent(this, BienvenueActivity.class));
+            } else {
+                startActivity(new Intent(this, BienvenueInvitesActivity.class));
+            }
+
         });
 
         // 🚪 Bouton "Déconnexion" → retour à MainActivity (écran d’accueil / connexion)

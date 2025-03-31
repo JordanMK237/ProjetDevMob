@@ -35,6 +35,16 @@ public class AjoutAppareilActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.contains("user_email");
+
+        if (!isLoggedIn) {
+            Toast.makeText(this, "Veuillez vous connecter pour ajouter un appareil", Toast.LENGTH_LONG).show();
+            finish(); // pour fermer l’activité actuelle
+            startActivity(new Intent(this, LoginActivity.class));
+            return;
+        }
+
         setContentView(R.layout.activity_ajout_appareil);
 
         // 🔗 Récupération des vues
@@ -52,9 +62,6 @@ public class AjoutAppareilActivity extends AppCompatActivity {
 
         // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
-            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
-
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {

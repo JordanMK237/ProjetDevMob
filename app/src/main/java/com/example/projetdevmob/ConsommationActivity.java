@@ -39,6 +39,15 @@ public class ConsommationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.contains("user_email");
+
+        if (!isLoggedIn) {
+            Toast.makeText(this, "Veuillez vous connecter pour consulter la consommation", Toast.LENGTH_LONG).show();
+            finish(); // facultatif si tu veux fermer l’activité
+            startActivity(new Intent(this, LoginActivity.class));
+            return;
+        }
         setContentView(R.layout.activity_consommation);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -59,9 +68,6 @@ public class ConsommationActivity extends AppCompatActivity {
 
         // 📋 Menu navigation
         navigationView.setNavigationItemSelectedListener(item -> {
-            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
-            boolean isLoggedIn = prefs.contains("user_email"); // Vérifie si un utilisateur est connecté
-
             int id = item.getItemId();
 
             if (id == R.id.nav_accueil) {
@@ -113,7 +119,6 @@ public class ConsommationActivity extends AppCompatActivity {
         });
 
         btnReserver.setOnClickListener(v -> {
-            SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
             int watt = prefs.getInt("watt", 0); // récupération du wattage demandé
             int consoPourcent = Math.min((watt * 100) / 2000, 100); // calcul % de 2000W
 
