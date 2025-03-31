@@ -67,12 +67,21 @@ public class DeconnexionActivity extends AppCompatActivity {
         });
 
         // 🚪 Bouton "Déconnexion" → retour à MainActivity (écran d’accueil / connexion)
+        // 🚪 Bouton "Déconnexion" → reset session et retour à MainActivity
         btnDeconnecter.setOnClickListener(v -> {
+            // ➖ Supprimer les données utilisateur stockées dans les SharedPreferences
+            getSharedPreferences("user_session", MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply();
+
+            // 🔁 Retour à l'accueil (MainActivity)
             Intent intent = new Intent(DeconnexionActivity.this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // reset de la pile
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });
+
     }
 
     // ✅ Gestion du bouton retour système
