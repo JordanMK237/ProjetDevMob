@@ -17,7 +17,6 @@ public class BienvenueActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageButton btnMenu;
-    private ImageButton btnRetour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +27,9 @@ public class BienvenueActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
-        btnRetour = findViewById(R.id.btn_retour);
+
 
         btnMenu.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
-        btnRetour.setOnClickListener(v -> onBackPressed());
 
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -64,7 +62,7 @@ public class BienvenueActivity extends AppCompatActivity {
         TextView infosTextView = findViewById(R.id.etage);
         TextView appareilsTextView = findViewById(R.id.appareils);
 
-        prenomTextView.setText("Bienvenue " + prenom + " " + nom + " 👋");
+        prenomTextView.setText("Bienvenue " + prenom + " " + nom );
         infosTextView.setText("Étage : " + etage + "\nSuperficie : " + superficie + " m²");
 
         if (nbEquipements > 0) {

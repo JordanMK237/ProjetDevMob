@@ -12,14 +12,22 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.projetdevmob.api.ApiService;
+import com.example.projetdevmob.api.RegisterReponse;
+import com.example.projetdevmob.api.RegisterRequete;
+import com.example.projetdevmob.api.RetrofitClient;
 import com.google.android.material.navigation.NavigationView;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private ImageButton btnMenu;
-    private ImageButton btnRetour; // ⬅️ bouton retour ajouté
+    private ImageButton btnRetour; // ️ bouton retour ajouté
     private Button btnInscription;
     private EditText inputPrenom, inputNom, inputEmail, inputPassword, inputEtage, inputSuperficie, inputReponseSecrete;
 
@@ -28,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register); // Vérifie le nom de ton fichier XML
 
-        // 🔽 Initialisation des vues
+        //  Initialisation des vues
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_view);
         btnMenu = findViewById(R.id.btn_menu);
@@ -52,10 +60,10 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
-        // ⬅️ Bouton retour → retour vers page précédente
+        // ⬅ Bouton retour → retour vers page précédente
         btnRetour.setOnClickListener(v -> onBackPressed());
 
-        // 📋 Navigation du menu
+        //  Navigation du menu
         navigationView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
 
@@ -79,8 +87,9 @@ public class RegisterActivity extends AppCompatActivity {
         btnInscription.setOnClickListener(v -> enregistrerUtilisateur());
     }
 
-    // 🔽 Méthode d'inscription
+    //  Méthode d'inscription
     private void enregistrerUtilisateur() {
+        //  Récupération des valeurs depuis les champs de saisie
         String prenom = inputPrenom.getText().toString().trim();
         String nom = inputNom.getText().toString().trim();
         String email = inputEmail.getText().toString().trim();
@@ -94,13 +103,35 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
-        String message = "Bienvenue " + prenom + " " + nom + " !\nInscription réussie ✅";
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        //  Envoi à l'API via Retrofit
+        RegisterRequete requete = new RegisterRequete(prenom, nom, email, password, etage, superficie, reponseSecrete);
+        ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
+        Call<RegisterReponse> call = apiService.registerUser(requete);
 
-        // ➤ Ici tu peux intégrer la logique pour envoyer les données (BDD, API, etc.)
+        call.enqueue(new Callback<RegisterReponse>() {
+            @Override
+            public void onResponse(Call<RegisterReponse> call, Response<RegisterReponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    if (response.body().isSuccess()) {
+                        Toast.makeText(RegisterActivity.this, "✅ Inscription réussie", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        finish();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "❌ " + response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(RegisterActivity.this, "Erreur côté serveur", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegisterReponse> call, Throwable t) {
+                Toast.makeText(RegisterActivity.this, "Erreur : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-    // ✅ Gestion du bouton retour système
+        // ✅ Gestion du bouton retour système
     @Override
     public void onBackPressed() {
         if (drawerLayout.isDrawerOpen(navigationView)) {

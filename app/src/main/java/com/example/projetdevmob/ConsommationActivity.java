@@ -106,13 +106,27 @@ public class ConsommationActivity extends AppCompatActivity {
 
         btnReserver.setOnClickListener(v -> {
             SharedPreferences prefs = getSharedPreferences("user_session", MODE_PRIVATE);
+            int watt = prefs.getInt("watt", 0); // récupération du wattage demandé
+            int consoPourcent = Math.min((watt * 100) / 2000, 100); // calcul % de 2000W
+
+            // Mise à jour de la consommation pour cette date
+            consommationMap.put(dateSelectionnee, consoPourcent);
+
+            // Sauvegarde de la date de réservation
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("date_reservation", dateSelectionnee);
             editor.apply();
 
-            Toast.makeText(this, "✅ Créneau réservé pour le " + dateSelectionnee, Toast.LENGTH_LONG).show();
+            // Feedback utilisateur
+            Toast.makeText(this, "✅ Créneau réservé pour le " + dateSelectionnee
+                    + " (" + consoPourcent + "%)", Toast.LENGTH_LONG).show();
+
             btnReserver.setVisibility(Button.GONE);
+
+            // Optionnel : mettre à jour l'affichage immédiatement
+            calendarView.setDate(calendarView.getDate()); // force le déclenchement du listener
         });
+
     }
 
     @Override

@@ -61,7 +61,7 @@ public class DeconnexionActivity extends AppCompatActivity {
 
         // 🔁 Bouton "Annuler" → retour à ListeAppartementsActivity
         btnAnnuler.setOnClickListener(v -> {
-            Intent intent = new Intent(DeconnexionActivity.this, ListeAppartementsActivity.class);
+            Intent intent = new Intent(DeconnexionActivity.this, BienvenueActivity.class);
             startActivity(intent);
             finish();
         });
