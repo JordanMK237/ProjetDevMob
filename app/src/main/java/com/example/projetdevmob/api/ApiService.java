@@ -14,8 +14,4 @@ public interface ApiService {
 
     @POST("ajoutAppareil")
     Call<ApiResponse> ajouterAppareil(@Body AjoutAppareilRequete requete);
-    @POST("/register")
-    Call<RegisterReponse> registerUser(@Body RegisterRequete requete);
-
-
 }

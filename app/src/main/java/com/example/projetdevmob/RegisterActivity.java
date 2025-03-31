@@ -2,7 +2,6 @@ package com.example.projetdevmob;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,8 +12,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.projetdevmob.api.ApiService;
+import com.example.projetdevmob.api.NewUser;
 import com.example.projetdevmob.api.RegisterReponse;
-import com.example.projetdevmob.api.RegisterRequete;
 import com.example.projetdevmob.api.RetrofitClient;
 import com.google.android.material.navigation.NavigationView;
 
@@ -50,6 +49,17 @@ public class RegisterActivity extends AppCompatActivity {
         inputEtage = findViewById(R.id.etage);
         inputSuperficie = findViewById(R.id.superficie);
         inputReponseSecrete = findViewById(R.id.reponse_secrete);
+
+        // Valeur par défaut pour test
+        if(true){
+            inputPrenom.setText("Victor");
+            inputNom.setText("Victor");
+            inputEmail.setText("Victor");
+            inputPassword.setText("Victor");
+            inputEtage.setText("69");
+            inputSuperficie.setText("69");
+            inputReponseSecrete.setText("Victor");
+        }
 
         // ☰ Bouton Menu
         btnMenu.setOnClickListener(v -> {
@@ -104,7 +114,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         //  Envoi à l'API via Retrofit
-        RegisterRequete requete = new RegisterRequete(prenom, nom, email, password, etage, superficie, reponseSecrete);
+        NewUser requete = new NewUser(prenom, nom, email, password, etage, superficie, reponseSecrete);
         ApiService apiService = RetrofitClient.getClient().create(ApiService.class);
         Call<RegisterReponse> call = apiService.registerUser(requete);
 
