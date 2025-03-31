@@ -34,9 +34,6 @@
             android:name=".ParametreActivity"
             android:exported="false" />
         <activity
-            android:name=".ListeAppartementsActivity"
-            android:exported="false" />
-        <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" /> <!-- MainActivity reste déclarée sans intent-filter -->
         <activity

@@ -1,4 +1,3 @@
-// LoginActivity.java
 package com.example.projetdevmob;
 
 import android.content.Intent;
@@ -18,7 +17,6 @@ import com.example.projetdevmob.api.ApiService;
 import com.example.projetdevmob.api.LoginRequete;
 import com.example.projetdevmob.api.LoginReponse;
 import com.example.projetdevmob.api.RetrofitClient;
-import com.example.projetdevmob.api.User;
 import com.google.android.material.navigation.NavigationView;
 
 import retrofit2.Call;
