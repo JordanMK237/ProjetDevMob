@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         inputReponseSecrete = findViewById(R.id.reponse_secrete);
 
         // Valeur par défaut pour test
-        if(true){
+        if(false){
             inputPrenom.setText("Victor");
             inputNom.setText("Victor");
             inputEmail.setText("Victor");
